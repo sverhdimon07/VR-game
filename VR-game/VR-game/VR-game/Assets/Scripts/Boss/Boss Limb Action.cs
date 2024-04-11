@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class BossLimbAction : MonoBehaviour
 {
-    private const string WEAPON_TAG = "Weapon";
+    private const string SWORD_TAG = "Sword";
+    private const string BULLET_TAG = "Bullet";
 
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float power;
+    public void Update()
+    {
+
+    }
     private void OnTriggerEnter(Collider collider)
     {
-        if (!collider.CompareTag(WEAPON_TAG))
+        if (gameObject.GetComponent<BossLimbAction>().enabled == false)
+        {
+            return;
+        }
+        if ((!collider.CompareTag(SWORD_TAG)) || (!collider.CompareTag(BULLET_TAG)))
         {
             return;
         }

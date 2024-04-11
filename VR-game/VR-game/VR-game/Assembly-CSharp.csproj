@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D9287787-0846-CD8A-DBD3-9467FA9AFAB2}</ProjectGuid>
+    <ProjectGuid>{FEC48269-E96F-42A9-5086-359907DE278A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -58,12 +58,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Boss Limb Action.cs" />
-    <Compile Include="Assets\Scripts\Boss Torso Inertia.cs" />
-    <Compile Include="Assets\Scripts\Bullet Behavior.cs" />
-    <Compile Include="Assets\Scripts\Animate Hands.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss Torso Inertia.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss Limb Action.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Bullet Spawn.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Bullet Behavior.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss Heath System.cs" />
     <Compile Include="Assets\Imported Models\Scifi-Gun\ReadMe.cs" />
-    <Compile Include="Assets\Scripts\Spawn Space Ship Script.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss Accept Incoming Damage.cs" />
+    <Compile Include="Assets\Scripts\Environment\Spawn Space Ship Script.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -831,15 +834,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj">
-      <Project>{4A51FF37-F6EA-B424-58D8-17162CCF41E6}</Project>
+      <Project>{84D3112E-23F1-B9A7-6877-8C484212034A}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj">
-      <Project>{55F6F871-63F9-C3A2-B6ED-B4FB7DFB8645}</Project>
+      <Project>{AE383005-64FB-947F-A379-AB659E884776}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj">
-      <Project>{82B9C6E8-5456-AE9D-E33E-F72160698108}</Project>
+      <Project>{090889AF-5771-3838-9FCC-90CDA80C9658}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor</Name>
     </ProjectReference>
   </ItemGroup>
