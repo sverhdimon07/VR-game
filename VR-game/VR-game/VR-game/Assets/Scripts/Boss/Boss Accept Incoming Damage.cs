@@ -8,65 +8,112 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     private const string BULLET_TAG = "Bullet";
 
     private float swordDamage = 10f;
-    private float gunBulletDamage = 5f;
+    private float gunBulletDamage = 1f;
 
-    [SerializeField] private GameObject obj; //поменять и не только здесь
+    [SerializeField] private GameObject bodyMesh;
     [SerializeField] private Material redMaterial;
     [SerializeField] private Material yellowMaterial;
     [SerializeField] private Material whiteMaterial;
-    private void Update() //добавить везде и узнать нагружает ли это систему
+
+    private bool bossWasDamaged = false;
+    private bool stagger = false;
+    private void Update() //потом удалить, где он не требуется (для гигиены кода)
     {
-        
+
     }
     private void AcceptSwordDamage()
     {
-        if (BossHeathSystem.Health <= 0)
+        if (BossHealthSystem.health <= 0)
         {
-            obj.GetComponent<SkinnedMeshRenderer>().material = yellowMaterial;//сделать врага желтым, и после этого включить отрубание конечностей
+            bodyMesh.GetComponent<SkinnedMeshRenderer>().material = yellowMaterial;//сделать врага желтым, и после этого включить отрубание конечностей
             return;//передать в аниматор анимацию смерти
         }
-        BossHeathSystem.Health -= swordDamage;
-        Debug.Log(BossHeathSystem.Health);
+        BossHealthSystem.health -= swordDamage;
+        Debug.Log(BossHealthSystem.health);
+        if (BossHealthSystem.health <= 0)
+        {
+            bodyMesh.GetComponent<SkinnedMeshRenderer>().material = yellowMaterial;//сделать врага желтым, и после этого включить отрубание конечностей
+            return;//передать в аниматор анимацию смерти
+        }
     }
     private void AcceptGunBulletDamage()
     {
-        if (BossHeathSystem.Health <= 0)
+        if (BossHealthSystem.health <= 0)
         {
-            obj.GetComponent<SkinnedMeshRenderer>().material = yellowMaterial;//сделать врага желтым, и после этого включить отрубание конечностей
+            bodyMesh.GetComponent<SkinnedMeshRenderer>().material = yellowMaterial;//сделать врага желтым, и после этого включить отрубание конечностей
             return;//передать в аниматор анимацию смерти
         }
-        BossHeathSystem.Health -= gunBulletDamage;
-        Debug.Log(BossHeathSystem.Health);
+        BossHealthSystem.health -= gunBulletDamage;
+        Debug.Log(BossHealthSystem.health);
+        if (BossHealthSystem.health <= 0)
+        {
+            bodyMesh.GetComponent<SkinnedMeshRenderer>().material = yellowMaterial;//сделать врага желтым, и после этого включить отрубание конечностей
+            return;//передать в аниматор анимацию смерти
+        }
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if ((!collider.CompareTag(SWORD_TAG)) && (!collider.CompareTag(BULLET_TAG)))
+        if (bossWasDamaged == false)
         {
-            return;
-        }
-        if (collider.CompareTag(SWORD_TAG))
-        {
-            AcceptSwordDamage();
-            if (BossHeathSystem.Health <= 0)
+            bossWasDamaged = true;
+            DamageCooldown();
+            if (stagger == false)
             {
-                return;
+                if (!collider.CompareTag(SWORD_TAG) && !collider.CompareTag(BULLET_TAG))
+                {
+                    return;
+                }
+                if (collider.CompareTag(SWORD_TAG))
+                {
+                    AcceptSwordDamage();
+                    if (BossHealthSystem.health <= 0)
+                    {
+                        stagger = true;
+                        StaggerExit();
+                        return;
+                    }
+                    bodyMesh.GetComponent<SkinnedMeshRenderer>().material = redMaterial;
+                    Invoke("BodyTurnWhite", 0.25f); //узнать как оно работает
+                }
+                if (collider.CompareTag(BULLET_TAG))
+                {
+                    AcceptGunBulletDamage();
+                    if (BossHealthSystem.health <= 0)
+                    {
+                        stagger = true;
+                        StaggerExit();
+                        return;
+                    }
+                    bodyMesh.GetComponent<SkinnedMeshRenderer>().material = redMaterial;
+                    Invoke("BodyTurnWhite", 0.25f); //узнать как оно работает
+                }
             }
-            obj.GetComponent<SkinnedMeshRenderer>().material = redMaterial;
-            Invoke("BodyTurnWhite", 0.25f); //узнать как оно работает
-        }
-        if (collider.CompareTag(BULLET_TAG))
-        {
-            AcceptGunBulletDamage();
-            if (BossHeathSystem.Health <= 0)
-            {
-                return;
-            }
-            obj.GetComponent<SkinnedMeshRenderer>().material = redMaterial;
-            Invoke("BodyTurnWhite", 0.25f); //узнать как оно работает
         }
     }
     private void BodyTurnWhite()
     {
-        obj.GetComponent<SkinnedMeshRenderer>().material = whiteMaterial;
+        bodyMesh.GetComponent<SkinnedMeshRenderer>().material = whiteMaterial;
+    }
+    private void Regeneration()
+    {
+        BossHealthSystem.HealthRegeneration();
+    }
+    private void MakingStaggerFalse()
+    {
+        stagger = false;
+    }
+    private void StaggerExit()
+    {
+        Invoke("MakingStaggerFalse", 3f);
+        Invoke("Regeneration", 3f);
+        Invoke("BodyTurnWhite", 3f);
+    }
+    private void MakingBossWasDamagedFalse()
+    {
+        bossWasDamaged = false;
+    }
+    private void DamageCooldown()
+    {
+        Invoke("MakingBossWasDamagedFalse", 0.5f);
     }
 }

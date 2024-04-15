@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SpawnSpaceShipScript : MonoBehaviour
 {
-    [SerializeField] private GameObject obj;
+    [SerializeField] private GameObject spaceShip;
     private Vector3 spawnPoint;
     [SerializeField] private float spawnDelayTime;
     private float nextSpawnTime = 0.0f;
@@ -17,8 +17,8 @@ public class SpawnSpaceShipScript : MonoBehaviour
         {
             nextSpawnTime = Time.time + spawnDelayTime;
             spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            GameObject ship = Instantiate(obj, spawnPoint, transform.rotation);
-            Destroy(ship, 20.0f);
+            GameObject shipCopy = Instantiate(spaceShip, spawnPoint, transform.rotation);
+            Destroy(shipCopy, 20.0f);
         }
     }
 }

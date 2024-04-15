@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossTorsoInertia : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private GameObject leftLeg;
     [SerializeField] private GameObject rightLeg;
     void Update()

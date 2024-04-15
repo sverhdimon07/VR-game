@@ -6,8 +6,6 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     private const string BOSS_TAG = "Boss";
-
-    [SerializeField] private GameObject obj;//попробовать написать gameObject вместо этого
     public void Update()
     {
 
@@ -18,6 +16,6 @@ public class BulletBehavior : MonoBehaviour
         {
             return;
         }
-        Destroy(obj);
+        Destroy(gameObject);
     }
 }

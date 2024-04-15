@@ -7,7 +7,7 @@ public class BossLimbAction : MonoBehaviour
     private const string SWORD_TAG = "Sword";
     private const string BULLET_TAG = "Bullet";
 
-    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private float power;
     public void Update()
     {

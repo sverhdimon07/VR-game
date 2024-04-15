@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class BulletSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject obj;
+    [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private float BulletSpawnDelay;
     private float newTimeBulletSpawn = 0.0f;
@@ -27,7 +27,7 @@ public class BulletSpawn : MonoBehaviour
             return;
         }
         newTimeBulletSpawn = Time.time + BulletSpawnDelay;
-        GameObject bulletCopy = Instantiate(obj, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        GameObject bulletCopy = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         bulletCopy.GetComponent<ConstantForce>().relativeForce = new Vector3(0,0,100);
         Destroy(bulletCopy, 3.0f);
     }
