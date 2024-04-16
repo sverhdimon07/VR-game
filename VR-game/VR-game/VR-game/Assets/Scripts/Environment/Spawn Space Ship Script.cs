@@ -18,6 +18,7 @@ public class SpawnSpaceShipScript : MonoBehaviour
             nextSpawnTime = Time.time + spawnDelayTime;
             spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject shipCopy = Instantiate(spaceShip, spawnPoint, transform.rotation);
+            shipCopy.GetComponent<ConstantForce>().relativeForce = new Vector3(0,0,-1000);
             Destroy(shipCopy, 20.0f);
         }
     }

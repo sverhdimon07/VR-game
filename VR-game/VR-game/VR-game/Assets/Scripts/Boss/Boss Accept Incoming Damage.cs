@@ -114,6 +114,6 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     }
     private void DamageCooldown()
     {
-        Invoke("MakingBossWasDamagedFalse", 0.5f);
+        Invoke("MakingBossWasDamagedFalse", 0.1f);
     }
 }

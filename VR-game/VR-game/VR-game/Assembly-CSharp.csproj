@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Behavior.cs" />
     <Compile Include="Assets\Imported Models\Scifi-Gun\ReadMe.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands.cs" />
+    <Compile Include="Assets\Scripts\UI\Diegetic UI\Boss Health Bar.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Accept Incoming Damage.cs" />
     <Compile Include="Assets\Scripts\Environment\Spawn Space Ship Script.cs" />
   </ItemGroup>
