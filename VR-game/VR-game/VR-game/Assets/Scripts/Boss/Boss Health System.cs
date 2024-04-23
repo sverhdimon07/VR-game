@@ -5,7 +5,8 @@ using UnityEngine;
 public class BossHealthSystem : MonoBehaviour
 {
     public static float health = 100f;
-    void Update()
+    public static float currentLivesCount = 3f;
+    private void Update()
     {
 
     }

@@ -5,9 +5,7 @@ using UnityEngine;
 public class BossLimbAction : MonoBehaviour
 {
     private const string SWORD_TAG = "Sword";
-    private const string BULLET_TAG = "Bullet";
 
-    [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private float power;
     public void Update()
     {
@@ -15,15 +13,15 @@ public class BossLimbAction : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if (gameObject.GetComponent<BossLimbAction>().enabled == false)
+        if (BossHealthSystem.currentLivesCount == 0f)
         {
-            return;
+            if (!collider.CompareTag(SWORD_TAG))
+            {
+                return;
+            }
+            gameObject.AddComponent<Rigidbody>().isKinematic = false;
+            gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * power);
         }
-        if ((!collider.CompareTag(SWORD_TAG)) || (!collider.CompareTag(BULLET_TAG)))
-        {
-            return;
-        }
-        rigidbody.isKinematic = false;
-        rigidbody.AddForce(Vector3.up * power);
+
     }
 }

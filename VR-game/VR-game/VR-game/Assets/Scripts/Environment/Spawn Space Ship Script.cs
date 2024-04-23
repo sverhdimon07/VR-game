@@ -4,8 +4,9 @@ using UnityEngine;
 public class SpawnSpaceShipScript : MonoBehaviour
 {
     [SerializeField] private GameObject spaceShip;
-    private Vector3 spawnPoint;
+    [SerializeField] private GameObject shipRotationPivot;
     [SerializeField] private float spawnDelayTime;
+    private Vector3 spawnPoint;
     private float nextSpawnTime = 0.0f;
     void Start()
     {
@@ -17,9 +18,9 @@ public class SpawnSpaceShipScript : MonoBehaviour
         {
             nextSpawnTime = Time.time + spawnDelayTime;
             spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            GameObject shipCopy = Instantiate(spaceShip, spawnPoint, transform.rotation);
-            shipCopy.GetComponent<ConstantForce>().relativeForce = new Vector3(0,0,-1000);
-            Destroy(shipCopy, 20.0f);
+            GameObject shipCopy = Instantiate(spaceShip, spawnPoint, shipRotationPivot.transform.rotation);
+            shipCopy.GetComponent<ConstantForce>().relativeForce = new Vector3(0,-2000,0);
+            Destroy(shipCopy, 10.0f);
         }
     }
 }

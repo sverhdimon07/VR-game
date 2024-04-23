@@ -58,16 +58,36 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Boss\Boss Torso Inertia.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Limb Action.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Health System.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Spawn.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Behavior.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
     <Compile Include="Assets\Imported Models\Scifi-Gun\ReadMe.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands.cs" />
     <Compile Include="Assets\Scripts\UI\Diegetic UI\Boss Health Bar.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Accept Incoming Damage.cs" />
     <Compile Include="Assets\Scripts\Environment\Spawn Space Ship Script.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss Legs and Torso Action.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
+    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
+    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -324,6 +344,15 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="SketchfabPlugin">
+      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Unity">
+      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="GLTFSerialization">
+      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -697,11 +726,71 @@
     <Reference Include="Unity.XR.Management">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.XR.Interaction.Toolkit.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.OpenXR.Features.ConformanceAutomation">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.ConformanceAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Formats.Fbx.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.Formats.Fbx.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.CoreUtils">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
+      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.OpenXR">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.Management.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Formats.Fbx.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Formats.Fbx.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.CoreUtils.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.Oculus.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.Interaction.Toolkit">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.EditorCoroutines.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
@@ -718,47 +807,29 @@
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.ConformanceAutomation">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.ConformanceAutomation.dll</HintPath>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.CoreUtils">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -769,23 +840,11 @@
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.XR.OpenXR">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.XR.Oculus">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Oculus.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Editor.dll</HintPath>
@@ -793,23 +852,17 @@
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.Management.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
+    <Reference Include="Autodesk.Fbx">
+      <HintPath>Library\ScriptAssemblies\Autodesk.Fbx.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Autodesk.Fbx.Editor">
+      <HintPath>Library\ScriptAssemblies\Autodesk.Fbx.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.CoreUtils.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -820,27 +873,15 @@
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.Oculus.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.Interaction.Toolkit">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj">
-      <Project>{4A51FF37-F6EA-B424-58D8-17162CCF41E6}</Project>
-      <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj">
       <Project>{55F6F871-63F9-C3A2-B6ED-B4FB7DFB8645}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj">
+      <Project>{4A51FF37-F6EA-B424-58D8-17162CCF41E6}</Project>
+      <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj">
       <Project>{82B9C6E8-5456-AE9D-E33E-F72160698108}</Project>
