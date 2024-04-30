@@ -10,10 +10,6 @@ public class BossLegsandTorsoAction : MonoBehaviour
     [SerializeField] private GameObject leftLeg;
     [SerializeField] private GameObject rightLeg;
     [SerializeField] private float power;
-    public void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider collider)
     {
         if (BossHealthSystem.currentLivesCount == 0f)

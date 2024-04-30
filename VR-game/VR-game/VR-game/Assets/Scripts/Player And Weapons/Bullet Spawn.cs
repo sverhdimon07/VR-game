@@ -16,10 +16,6 @@ public class BulletSpawn : MonoBehaviour
 
     [SerializeField] private InputActionProperty gripClick;
     [SerializeField] private InputActionProperty triggerClick;
-    private void Update()
-    {
-
-    }
     private void OnTriggerStay(Collider collider)
     {
         if (!collider.CompareTag(HAND_TAG))

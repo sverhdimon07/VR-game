@@ -6,10 +6,6 @@ public class BossHealthSystem : MonoBehaviour
 {
     public static float health = 100f;
     public static float currentLivesCount = 3f;
-    private void Update()
-    {
-
-    }
     public static void HealthRegeneration()
     {
         health = 0;

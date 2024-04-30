@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossAcceptIncomingDamage : MonoBehaviour
 {
@@ -22,16 +23,17 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     [SerializeField] private Material greenMaterial;
     [SerializeField] private Material whiteMaterial;
 
-    private bool bossWasDamaged = false;
-    private bool stagger = false;
-    private bool bossWasKilled = false;
-    private void Update() //потом удалить, где он не требуется (для гигиены кода)
-    {
+    private bool bossWasDamagedState = false;
+    private bool staggerState = false;
+    private bool bossWasKilledState = false;
 
-    }
+    [SerializeField] private UnityEvent hitEvent;//посмотреть на синтаксис
+    [SerializeField] private UnityEvent destructionLifeEvent;
+    [SerializeField] private UnityEvent regenerationEndingEvent;
     private void AcceptSwordDamage()
     {
         BossHealthSystem.health -= swordDamage;
+        hitEvent.Invoke();//разобраться с вопросительным знаком
         Debug.Log(BossHealthSystem.health);
         if (BossHealthSystem.health <= 0)
         {
@@ -41,6 +43,7 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     private void AcceptGunBulletDamage()
     {
         BossHealthSystem.health -= gunBulletDamage;
+        hitEvent.Invoke();
         Debug.Log(BossHealthSystem.health);
         if (BossHealthSystem.health <= 0)
         {
@@ -49,13 +52,13 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if (bossWasKilled == false)
+        if (bossWasKilledState == false)
         {
-            if (bossWasDamaged == false)
+            if (bossWasDamagedState == false)
             {
-                bossWasDamaged = true;
-                DamageCooldown();
-                if (stagger == false)
+                bossWasDamagedState = true;
+                DamageCooldown(); // добавить разную задержку для катаны и для бластера
+                if (staggerState == false)
                 {
                     if (!collider.CompareTag(SWORD_TAG) && !collider.CompareTag(BULLET_TAG))
                     {
@@ -67,13 +70,14 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                         if (BossHealthSystem.health <= 0)
                         {
                             BossHealthSystem.currentLivesCount -= 1;
+                            destructionLifeEvent.Invoke();
                             if (BossHealthSystem.currentLivesCount == 0f)
                             {
                                 ChangeBodyColor(greenMaterial);
-                                bossWasKilled = true;
+                                bossWasKilledState = true;
                                 return;
                             }
-                            stagger = true;
+                            staggerState = true;
                             StaggerExit();
                             return;
                         }
@@ -86,13 +90,14 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                         if (BossHealthSystem.health <= 0)
                         {
                             BossHealthSystem.currentLivesCount -= 1;
+                            destructionLifeEvent.Invoke();
                             if (BossHealthSystem.currentLivesCount == 0f)
                             {
                                 ChangeBodyColor(greenMaterial);
-                                bossWasKilled = true;
+                                bossWasKilledState = true;
                                 return;
                             }
-                            stagger = true;
+                            staggerState = true;
                             StaggerExit();
                             return;
                         }
@@ -113,21 +118,26 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     }
     private void MakingStaggerFalse()
     {
-        stagger = false;
+        staggerState = false;
     }
     private void StaggerExit()
     {
         Invoke("MakingStaggerFalse", 3f);
         Invoke("Regeneration", 3f);
         Invoke("BodyTurnWhite", 3f);
+        Invoke("InvokingRegenerationEndingEvent",3f);
     }
     private void MakingBossWasDamagedFalse()
     {
-        bossWasDamaged = false;
+        bossWasDamagedState = false;
     }
     private void DamageCooldown()
     {
         Invoke("MakingBossWasDamagedFalse", 0.1f);
+    }
+    private void InvokingRegenerationEndingEvent()
+    {
+        regenerationEndingEvent.Invoke();
     }
     private void ChangeBodyColor(Material material)
     {

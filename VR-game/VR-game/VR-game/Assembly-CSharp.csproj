@@ -58,35 +58,61 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Imported Models\_Barking_Dog\Common Scripts\MouseLook.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Limb Action.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
+    <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Health System.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
+    <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
+    <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Spawn.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
+    <Compile Include="Assets\Scripts\Environment\Arena Light Delay.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Behavior.cs" />
+    <Compile Include="Assets\Scripts\Environment\Arena Event Wall.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
     <Compile Include="Assets\Imported Models\Scifi-Gun\ReadMe.cs" />
+    <Compile Include="Assets\Scripts\Environment\Objects Spawner.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands.cs" />
     <Compile Include="Assets\Scripts\UI\Diegetic UI\Boss Health Bar.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
+    <Compile Include="Assets\Imported Models\_Barking_Dog\Common Scripts\Turn_Move.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Accept Incoming Damage.cs" />
-    <Compile Include="Assets\Scripts\Environment\Spawn Space Ship Script.cs" />
+    <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Legs and Torso Action.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
+    <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Grass Sway.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Blur.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
+    <None Include="Assets\Import\Dark_rock_with_lava\license.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Depth Mask Edge Detection.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Dissolve.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plasma.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Outline.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus Line.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
+    <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
+    <None Include="Assets\Import\Mercury_planet_(brass_stylised)\license.txt" />
+    <None Include="Assets\Imported Models\_Barking_Dog\Readme_Please.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
   </ItemGroup>
   <ItemGroup>

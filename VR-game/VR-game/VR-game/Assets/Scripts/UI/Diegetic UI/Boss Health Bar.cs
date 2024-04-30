@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class BossHealthBar : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
@@ -10,7 +11,7 @@ public class BossHealthBar : MonoBehaviour
     [SerializeField] private Image livesCounterBar2;
     [SerializeField] private Image livesCounterBar3;
     private float lastLivesCount = 3f;
-    private void Update()
+    public void RefreshUI()
     {
         healthBar.fillAmount = (BossHealthSystem.health)/100;
         if (lastLivesCount != BossHealthSystem.currentLivesCount)
@@ -18,7 +19,6 @@ public class BossHealthBar : MonoBehaviour
             LivesCounterChecking();
             lastLivesCount = BossHealthSystem.currentLivesCount;
         }
-
     }
     private void LivesCounterChecking()
     {
@@ -29,14 +29,17 @@ public class BossHealthBar : MonoBehaviour
         if (BossHealthSystem.currentLivesCount == 2f)
         {
             livesCounterBar3.fillAmount = 0;
+            return;
         }
         if (BossHealthSystem.currentLivesCount == 1f)
         {
             livesCounterBar2.fillAmount = 0;
+            return;
         }
         if (BossHealthSystem.currentLivesCount == 0f)
         {
             livesCounterBar1.fillAmount = 0;
+            return;
         }
     }
 }

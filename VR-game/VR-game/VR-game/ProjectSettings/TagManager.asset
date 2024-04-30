@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - Bullet
   - PlayerHands
+  - PlayerBox
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
+  - Start Base
+  - Arena Element
   - 
   - 
   - 

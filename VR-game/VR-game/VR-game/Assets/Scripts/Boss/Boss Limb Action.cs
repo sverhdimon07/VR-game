@@ -7,10 +7,6 @@ public class BossLimbAction : MonoBehaviour
     private const string SWORD_TAG = "Sword";
 
     [SerializeField] private float power;
-    public void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider collider)
     {
         if (BossHealthSystem.currentLivesCount == 0f)
@@ -22,6 +18,5 @@ public class BossLimbAction : MonoBehaviour
             gameObject.AddComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * power);
         }
-
     }
 }

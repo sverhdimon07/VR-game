@@ -6,10 +6,6 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     private const string BOSS_TAG = "Boss";
-    public void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider collider)
     {
         if (!collider.CompareTag(BOSS_TAG))
