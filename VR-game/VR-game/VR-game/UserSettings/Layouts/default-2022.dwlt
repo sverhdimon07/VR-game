@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 314.5
     height: 433
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 54
+  controlID: 264
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 136
+  controlID: 343
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 263
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,8 +242,8 @@ MonoBehaviour:
     y: 0
     width: 355
     height: 860
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -499,7 +499,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 4ef8ffff2afbffff406c0000
+      m_ExpandedIDs: fee5faff02e6faff06e6faff4495fcfffa85fefffe85feff0a86feff0e86feff1286feff1686feff1a86feffda43ffff3688000090890000948900007496000098960000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -615,7 +615,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Import/Mercury_planet_(brass_stylised)/materials
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -623,16 +623,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Import/Mercury_planet_(brass_stylised)/materials
+  - Assets/Prefabs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: "D:\\Unity-BACKUP\\\u041E\u0421\u041D\u041E\u0412\u0410\\VR-game"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f8840000
-    m_LastClickedID: 34040
-    m_ExpandedIDs: 00000000e2830000e4830000e6830000e8830000ea830000ec830000ee830000f0830000c4840000f4840000
+    m_SelectedIDs: 16880000
+    m_LastClickedID: 34838
+    m_ExpandedIDs: 000000000688000008880000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -660,7 +660,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2830000e4830000e6830000e8830000ea830000ec830000ee830000f0830000
+    m_ExpandedIDs: 0000000006880000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -691,15 +691,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 5c74000000000000fec8000008c90000b8660000b2a8000010d90000fad90000c8900000688e00006a8e0000668e00006c8e00005e8e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Mercury_planet_(brass_stylised)
-      m_OriginalName: Mercury_planet_(brass_stylised)
+      m_Name: Object Spawner 1
+      m_OriginalName: Object Spawner 1
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 34036
+      m_UserData: 16870
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -1125,9 +1125,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 628, y: 10}
+      snapOffset: {x: -312.5, y: -396}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 3
       id: UnityEditor.SceneViewCameraOverlay
       index: 7
       layout: 4
@@ -1157,9 +1157,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -54.900177, y: 23.33694, z: -70.18563}
+    m_Target: {x: -29.400745, y: -8.0019455, z: -74.6667}
     speed: 2
-    m_Value: {x: -54.900177, y: 23.33694, z: -70.18563}
+    m_Value: {x: -29.400745, y: -8.0019455, z: -74.6667}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1205,13 +1205,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.008497041, y: -0.9497645, z: -0.026560823, w: 0.315828}
+    m_Target: {x: -0.08952567, y: 0.93530786, z: -0.26636153, w: -0.221906}
     speed: 2
-    m_Value: {x: 0.00852589, y: -0.9490148, z: -0.026513895, w: 0.31399855}
+    m_Value: {x: -0.089721784, y: 0.9335049, z: -0.26736307, w: -0.2214396}
   m_Size:
-    m_Target: 54.08688
+    m_Target: 26.421982
     speed: 2
-    m_Value: 54.08688
+    m_Value: 26.421982
   m_Ortho:
     m_Target: 0
     speed: 2

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Spaceship (EZNO)
+* source:	https://sketchfab.com/3d-models/spaceship-ezno-7bbb1d5b07b549dcb8ca3b1966dd86fb
+* author:	bossdeff (https://sketchfab.com/bossdeff)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Spaceship (EZNO)" (https://sketchfab.com/3d-models/spaceship-ezno-7bbb1d5b07b549dcb8ca3b1966dd86fb) by bossdeff (https://sketchfab.com/bossdeff) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

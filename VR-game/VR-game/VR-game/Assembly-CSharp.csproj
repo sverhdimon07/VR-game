@@ -60,23 +60,27 @@
   <ItemGroup>
     <Compile Include="Assets\Imported Models\_Barking_Dog\Common Scripts\MouseLook.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
+    <Compile Include="Assets\Scripts\Environment\Object Spawner 1.cs" />
+    <Compile Include="Assets\Scripts\Environment\Arena Light.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Limb Action.cs" />
+    <Compile Include="Assets\Scripts\Environment\Road Event Wall.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Health System.cs" />
+    <Compile Include="Assets\Scripts\Environment\Object Spawner 2.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
+    <Compile Include="Assets\Scripts\Environment\Object Spawner 3.cs" />
+    <Compile Include="Assets\Scripts\Environment\Main Doors.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Spawn.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
-    <Compile Include="Assets\Scripts\Environment\Arena Light Delay.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Behavior.cs" />
     <Compile Include="Assets\Scripts\Environment\Arena Event Wall.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
     <Compile Include="Assets\Imported Models\Scifi-Gun\ReadMe.cs" />
-    <Compile Include="Assets\Scripts\Environment\Objects Spawner.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands.cs" />
     <Compile Include="Assets\Scripts\UI\Diegetic UI\Boss Health Bar.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
@@ -90,6 +94,7 @@
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabApi.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Import\Alien_Planet\license.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Grass Sway.shader" />
@@ -98,6 +103,8 @@
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
     <None Include="Assets\Import\Dark_rock_with_lava\license.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
+    <None Include="Assets\Import\test_saturn\license.txt" />
+    <None Include="Assets\Import\Spaceship_(EZNO)\license.txt" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Depth Mask Edge Detection.shader" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Dissolve.shader" />
@@ -108,12 +115,16 @@
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
+    <None Include="Assets\Import\Mercury_(planet)\license.txt" />
+    <None Include="Assets\Import\Lava_planet\license.txt" />
+    <None Include="Assets\Import\Planet_Afroditi\license.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
     <None Include="Assets\Import\Mercury_planet_(brass_stylised)\license.txt" />
     <None Include="Assets\Imported Models\_Barking_Dog\Readme_Please.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
+    <None Include="Assets\Import\Spaceship_-_Evil_(Gravity)\license.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -365,8 +376,14 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="Pathfinding.Poly2Tri">
+      <HintPath>Assets\AstarPathfindingProject\Plugins\Poly2Tri\Pathfinding.Poly2Tri.dll</HintPath>
+    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.ClipperLib">
+      <HintPath>Assets\AstarPathfindingProject\Plugins\Clipper\Pathfinding.ClipperLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
@@ -376,6 +393,9 @@
     </Reference>
     <Reference Include="Ionic.Zip.Unity">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="GLTFSerialization">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
@@ -905,9 +925,21 @@
       <Project>{55F6F871-63F9-C3A2-B6ED-B4FB7DFB8645}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator</Name>
     </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{6DA4C63F-6B66-7D95-10B9-E2A990972B8F}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{11CEC652-0EEE-5013-CE98-B222826F73C6}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj">
       <Project>{4A51FF37-F6EA-B424-58D8-17162CCF41E6}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{3FCFCAB1-7791-9421-3BDA-C02F218193F4}</Project>
+      <Name>AstarPathfindingProject</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj">
       <Project>{82B9C6E8-5456-AE9D-E33E-F72160698108}</Project>

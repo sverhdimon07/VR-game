@@ -10,14 +10,16 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     private const string BULLET_TAG = "Bullet";
 
     private float swordDamage = 10f;
-    private float gunBulletDamage = 1f;
+    private float gunBulletDamage = 0.5f;
+    private float staggerExitTime = 3f;
 
-    [SerializeField] private GameObject headRender;
-    [SerializeField] private GameObject torsoRender;
-    [SerializeField] private GameObject leftArmRender;
-    [SerializeField] private GameObject leftLegRender;
-    [SerializeField] private GameObject rightArmRender;
-    [SerializeField] private GameObject rightLegRender;
+    [SerializeField] private MeshRenderer headRender;
+    [SerializeField] private MeshRenderer torsoRender;
+    [SerializeField] private MeshRenderer leftArmRender;
+    [SerializeField] private MeshRenderer leftLegRender;
+    [SerializeField] private MeshRenderer rightArmRender;
+    [SerializeField] private MeshRenderer rightLegRender;
+
     [SerializeField] private Material redMaterial;
     [SerializeField] private Material yellowMaterial;
     [SerializeField] private Material greenMaterial;
@@ -27,13 +29,13 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     private bool staggerState = false;
     private bool bossWasKilledState = false;
 
-    [SerializeField] private UnityEvent hitEvent;//посмотреть на синтаксис
-    [SerializeField] private UnityEvent destructionLifeEvent;
-    [SerializeField] private UnityEvent regenerationEndingEvent;
+    [SerializeField] private UnityEvent bossDamaged;//посмотреть на синтаксис
+    [SerializeField] private UnityEvent LifeDestroyed;
+    [SerializeField] private UnityEvent regenerationEnded;
     private void AcceptSwordDamage()
     {
         BossHealthSystem.health -= swordDamage;
-        hitEvent.Invoke();//разобраться с вопросительным знаком
+        bossDamaged.Invoke();//разобраться с вопросительным знаком
         Debug.Log(BossHealthSystem.health);
         if (BossHealthSystem.health <= 0)
         {
@@ -43,7 +45,7 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     private void AcceptGunBulletDamage()
     {
         BossHealthSystem.health -= gunBulletDamage;
-        hitEvent.Invoke();
+        bossDamaged.Invoke();
         Debug.Log(BossHealthSystem.health);
         if (BossHealthSystem.health <= 0)
         {
@@ -70,7 +72,7 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                         if (BossHealthSystem.health <= 0)
                         {
                             BossHealthSystem.currentLivesCount -= 1;
-                            destructionLifeEvent.Invoke();
+                            LifeDestroyed.Invoke();
                             if (BossHealthSystem.currentLivesCount == 0f)
                             {
                                 ChangeBodyColor(greenMaterial);
@@ -78,11 +80,11 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                                 return;
                             }
                             staggerState = true;
-                            StaggerExit();
+                            StaggerExit(staggerExitTime);
                             return;
                         }
                         ChangeBodyColor(redMaterial);
-                        Invoke("BodyTurnWhite", 0.25f); //узнать как оно работает
+                        Invoke(nameof(BodyTurnWhite), 0.25f); //узнать как оно работает
                     }
                     if (collider.CompareTag(BULLET_TAG))
                     {
@@ -90,7 +92,7 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                         if (BossHealthSystem.health <= 0)
                         {
                             BossHealthSystem.currentLivesCount -= 1;
-                            destructionLifeEvent.Invoke();
+                            LifeDestroyed.Invoke();
                             if (BossHealthSystem.currentLivesCount == 0f)
                             {
                                 ChangeBodyColor(greenMaterial);
@@ -98,11 +100,11 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                                 return;
                             }
                             staggerState = true;
-                            StaggerExit();
+                            StaggerExit(staggerExitTime);
                             return;
                         }
                         ChangeBodyColor(redMaterial);
-                        Invoke("BodyTurnWhite", 0.25f); //узнать как оно работает
+                        Invoke(nameof(BodyTurnWhite), 0.25f); //узнать как оно работает
                     }
                 }
             }
@@ -120,12 +122,12 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     {
         staggerState = false;
     }
-    private void StaggerExit()
+    private void StaggerExit(float time)
     {
-        Invoke("MakingStaggerFalse", 3f);
-        Invoke("Regeneration", 3f);
-        Invoke("BodyTurnWhite", 3f);
-        Invoke("InvokingRegenerationEndingEvent",3f);
+        Invoke(nameof(MakingStaggerFalse), time);
+        Invoke(nameof(Regeneration), time);
+        Invoke(nameof(BodyTurnWhite), time);
+        Invoke(nameof(InvokingRegenerationEndedEvent), time);
     }
     private void MakingBossWasDamagedFalse()
     {
@@ -133,19 +135,19 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     }
     private void DamageCooldown()
     {
-        Invoke("MakingBossWasDamagedFalse", 0.1f);
+        Invoke(nameof(MakingBossWasDamagedFalse), 0.1f);
     }
-    private void InvokingRegenerationEndingEvent()
+    private void InvokingRegenerationEndedEvent()
     {
-        regenerationEndingEvent.Invoke();
+        regenerationEnded.Invoke();
     }
     private void ChangeBodyColor(Material material)
     {
-        headRender.GetComponent<MeshRenderer>().material = material;
-        torsoRender.GetComponent<MeshRenderer>().material = material;
-        leftArmRender.GetComponent<MeshRenderer>().material = material;
-        leftLegRender.GetComponent<MeshRenderer>().material = material;
-        rightArmRender.GetComponent<MeshRenderer>().material = material;
-        rightLegRender.GetComponent<MeshRenderer>().material = material;
+        headRender.material = material;
+        torsoRender.material = material;
+        leftArmRender.material = material;
+        leftLegRender.material = material;
+        rightArmRender.material = material;
+        rightLegRender.material = material;
     }
 }

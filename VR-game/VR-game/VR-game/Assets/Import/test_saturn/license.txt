@@ -1,0 +1,11 @@
+Model Information:
+* title:	test saturn
+* source:	https://sketchfab.com/3d-models/test-saturn-4fca995b2824457686da78ef91f946c0
+* author:	mrcp (https://sketchfab.com/marcopitti)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "test saturn" (https://sketchfab.com/3d-models/test-saturn-4fca995b2824457686da78ef91f946c0) by mrcp (https://sketchfab.com/marcopitti) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -9,6 +9,9 @@ public class ArenaEventWall : MonoBehaviour
     private const string PLAYER_TAG = "PlayerBox";
 
     [SerializeField] private UnityEvent wallActivated;
+
+    [SerializeField] private BoxCollider eventWallCollider;
+
     [SerializeField] private ParticleSystem dust1;
     [SerializeField] private ParticleSystem dust2;
     [SerializeField] private ParticleSystem fire1;
@@ -34,6 +37,6 @@ public class ArenaEventWall : MonoBehaviour
     }
     private void TurningOnCollider()
     {
-        GetComponent<BoxCollider>().isTrigger = false;
+        eventWallCollider.isTrigger = false;
     }
 }
