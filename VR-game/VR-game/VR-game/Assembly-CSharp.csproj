@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Imported Models\_Barking_Dog\Common Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Hand Color.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
     <Compile Include="Assets\Scripts\Environment\Object Spawner 1.cs" />
     <Compile Include="Assets\Scripts\Environment\Arena Light.cs" />
@@ -66,28 +67,36 @@
     <Compile Include="Assets\Scripts\Environment\Road Event Wall.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands 1.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Health System.cs" />
     <Compile Include="Assets\Scripts\Environment\Object Spawner 2.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands 2.cs" />
     <Compile Include="Assets\Scripts\Environment\Object Spawner 3.cs" />
     <Compile Include="Assets\Scripts\Environment\Main Doors.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Spawn.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss AI.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Behavior.cs" />
+    <Compile Include="Assets\Scripts\UI\Diegetic UI\Player Health Bar.cs" />
     <Compile Include="Assets\Scripts\Environment\Arena Event Wall.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Player Health System.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Boss Holding Point Position.cs" />
     <Compile Include="Assets\Imported Models\Scifi-Gun\ReadMe.cs" />
-    <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Player.cs" />
     <Compile Include="Assets\Scripts\UI\Diegetic UI\Boss Health Bar.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\Imported Models\_Barking_Dog\Common Scripts\Turn_Move.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\XR Grab Interactable Two Attach.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Accept Incoming Damage.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\PlayerAcceptIncomingDamage.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Legs and Torso Action.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
@@ -120,8 +129,10 @@
     <None Include="Assets\Import\Planet_Afroditi\license.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
+    <None Include="Assets\Import\Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)\license.txt" />
     <None Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
     <None Include="Assets\Import\Mercury_planet_(brass_stylised)\license.txt" />
+    <None Include="Assets\Import\Sci-Fi_Table\license.txt" />
     <None Include="Assets\Imported Models\_Barking_Dog\Readme_Please.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
     <None Include="Assets\Import\Spaceship_-_Evil_(Gravity)\license.txt" />

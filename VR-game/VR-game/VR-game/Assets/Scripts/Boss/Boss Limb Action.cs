@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossLimbAction : MonoBehaviour
 {
-    private const string SWORD_TAG = "Sword";
+    private const string SWORD_TAG = "PlayerSword";
 
     [SerializeField] private float power;
     private void OnTriggerEnter(Collider collider)

@@ -5,10 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boss
-  - Sword
   - Bullet
   - PlayerHands
   - PlayerBox
+  - PlayerSword
+  - BossSword
+  - PlayerGun
+  - PlayerLeftHand
+  - PlayerRightHand
   layers:
   - Default
   - TransparentFX

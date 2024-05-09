@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class BossAcceptIncomingDamage : MonoBehaviour
 {
-    private const string SWORD_TAG = "Sword";
+    private const string SWORD_TAG = "PlayerSword";
     private const string BULLET_TAG = "Bullet";
 
     private float swordDamage = 10f;
@@ -32,6 +32,7 @@ public class BossAcceptIncomingDamage : MonoBehaviour
     [SerializeField] private UnityEvent bossDamaged;//посмотреть на синтаксис
     [SerializeField] private UnityEvent LifeDestroyed;
     [SerializeField] private UnityEvent regenerationEnded;
+    [SerializeField] private UnityEvent bossDied;
     private void AcceptSwordDamage()
     {
         BossHealthSystem.health -= swordDamage;
@@ -77,6 +78,7 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                             {
                                 ChangeBodyColor(greenMaterial);
                                 bossWasKilledState = true;
+                                bossDied.Invoke();
                                 return;
                             }
                             staggerState = true;
@@ -97,6 +99,7 @@ public class BossAcceptIncomingDamage : MonoBehaviour
                             {
                                 ChangeBodyColor(greenMaterial);
                                 bossWasKilledState = true;
+                                bossDied.Invoke();
                                 return;
                             }
                             staggerState = true;

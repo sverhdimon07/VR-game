@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossLegsandTorsoAction : MonoBehaviour
 {
-    private const string SWORD_TAG = "Sword";
+    private const string SWORD_TAG = "PlayerSword";
 
     [SerializeField] private GameObject torso;
     [SerializeField] private GameObject leftLeg;
