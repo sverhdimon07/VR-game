@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 public class BulletSpawn : MonoBehaviour
 {
-    private const string HAND_TAG = "PlayerHands";
+    private const string LEFTHAND_TAG = "PlayerLeftHand";
+    private const string RIGHTHAND_TAG = "PlayerRightHand";
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -14,22 +15,39 @@ public class BulletSpawn : MonoBehaviour
     private float newTimeBulletSpawn = 0.0f;
     private bool gripActivated = false;
 
-    [SerializeField] private InputActionProperty gripClick;
-    [SerializeField] private InputActionProperty triggerClick;
+    [SerializeField] private InputActionProperty leftGripClick;
+    [SerializeField] private InputActionProperty leftTriggerClick;
+    [SerializeField] private InputActionProperty rightGripClick;
+    [SerializeField] private InputActionProperty rightTriggerClick;
     private void OnTriggerStay(Collider collider)
     {
-        if (!collider.CompareTag(HAND_TAG))
+        if (!collider.CompareTag(LEFTHAND_TAG) && !collider.CompareTag(RIGHTHAND_TAG))
         {
             return;
         }
-        if (gripClick.action.ReadValue<float>() > 0)
+        if (collider.CompareTag(LEFTHAND_TAG))
         {
-            gripActivated = true;
+            if (leftGripClick.action.ReadValue<float>() > 0)
+            {
+                gripActivated = true;
+            }
+            if ((leftTriggerClick.action.ReadValue<float>() > 0) && (gripActivated == true))
+            {
+                BulletCreation();
+            }
         }
-        if ((triggerClick.action.ReadValue<float>() > 0) && (gripActivated == true))
+        if (collider.CompareTag(RIGHTHAND_TAG))
         {
-            BulletCreation();
+            if (rightGripClick.action.ReadValue<float>() > 0)
+            {
+                gripActivated = true;
+            }
+            if ((rightTriggerClick.action.ReadValue<float>() > 0) && (gripActivated == true))
+            {
+                BulletCreation();
+            }
         }
+
     }
     private void BulletCreation()
     {

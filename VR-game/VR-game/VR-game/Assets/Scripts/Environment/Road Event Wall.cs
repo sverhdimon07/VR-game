@@ -7,6 +7,8 @@ public class RoadEventWall : MonoBehaviour
 {
     private const string PLAYER_TAG = "PlayerBox";
 
+    [SerializeField] private BoxCollider mainDoorsCollider;
+
     [SerializeField] private UnityEvent wallActivated;
     private void OnTriggerEnter(Collider collider)
     {
@@ -15,5 +17,10 @@ public class RoadEventWall : MonoBehaviour
             return;
         }
         wallActivated.Invoke();
+        Invoke(nameof(DisableIsTriggerMainDoorsCollider), 1f);
+    }
+    private void DisableIsTriggerMainDoorsCollider()
+    {
+        mainDoorsCollider.isTrigger = false;
     }
 }

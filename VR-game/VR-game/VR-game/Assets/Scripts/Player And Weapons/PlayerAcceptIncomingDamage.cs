@@ -9,24 +9,19 @@ public class PlayerAcceptIncomingDamage : MonoBehaviour
     private const string SWORD_TAG = "BossSword";
 
     private float swordDamage = 10f;
-    private float staggerExitTime = 3f;
+    private float staggerExitTime = 7f;
 
     private bool staggerState = false;
     private bool playerWasKilledState = false;
 
-    [SerializeField] private UnityEvent playerDamaged;//посмотреть на синтаксис
+    [SerializeField] private UnityEvent playerDamaged;
     [SerializeField] private UnityEvent LifeDestroyed;
     [SerializeField] private UnityEvent regenerationEnded;
     [SerializeField] private UnityEvent playerDied;
     private void AcceptSwordDamage()
     {
         PlayerHealthSystem.health -= swordDamage;
-        playerDamaged.Invoke();//разобраться с вопросительным знаком
-        Debug.Log(BossHealthSystem.health);
-        if (PlayerHealthSystem.health <= 0)
-        {
-            //сделать состояние стаггера
-        }
+        playerDamaged.Invoke();
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -43,6 +38,7 @@ public class PlayerAcceptIncomingDamage : MonoBehaviour
                 {
                     PlayerHealthSystem.currentLivesCount -= 1;
                     LifeDestroyed.Invoke();
+
                     if (PlayerHealthSystem.currentLivesCount == 0f)
                     {
                         playerWasKilledState = true;

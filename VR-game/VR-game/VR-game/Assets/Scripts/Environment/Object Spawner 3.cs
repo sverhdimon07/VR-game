@@ -17,7 +17,7 @@ public class ObjectSpawner3 : MonoBehaviour
         spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         for (int i = 0; i < 3; i++)
         {
-            Invoke(nameof(ObjectCreation), (i + 7) / 3f);
+            Invoke(nameof(ObjectCreation), (i + 1f) / 3f);
         }
     }
     private void ObjectCreation()

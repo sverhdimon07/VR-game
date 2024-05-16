@@ -9,6 +9,7 @@ public class AnimateHands1 : MonoBehaviour
     private const string TRIGGER = "Trigger";
 
     [SerializeField] private Animator animator;
+
     [SerializeField] private InputActionProperty gripAnimationAction;
     [SerializeField] private InputActionProperty triggerAnimationAction;
     private void Update()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MainDoors : MonoBehaviour
 {
@@ -12,10 +13,16 @@ public class MainDoors : MonoBehaviour
     private bool enterState = false;
     private bool exitState = true;
 
+    private float speed1 = 0.01f;
+    private float speed2 = 0.1f;
+
     private Vector3 destination1;
     private Vector3 destination2;
     private Vector3 destination3;
     private Vector3 destination4;
+
+    [SerializeField] private UnityEvent opened;
+    [SerializeField] private UnityEvent closed;
     private void Start()
     {
         destination1 = door1.position + new Vector3(3f, 0, 0);
@@ -28,11 +35,11 @@ public class MainDoors : MonoBehaviour
     {
         if (enterState == true)
         {
-            OpenDoors(0.1f);
+            OpenDoors(speed1);
         }
         else if (exitState == true)
         {
-            CloseDoors(0.1f);
+            CloseDoors(speed2);
         }
     }
     private void OnTriggerEnter(Collider collider)
@@ -41,9 +48,10 @@ public class MainDoors : MonoBehaviour
         {
             return;
         }
+        opened.Invoke();
         enterState = true;
         exitState = false;
-        enabled = true;
+        Invoke(nameof(MakeEnabled), 0.8f);
     }
     private void OnTriggerExit(Collider collider)
     {
@@ -51,8 +59,10 @@ public class MainDoors : MonoBehaviour
         {
             return;
         }
+        closed.Invoke();
         enterState = false;
         exitState = true;
+        Invoke(nameof(MakeDisabled), 1.5f);
     }
     private void OpenDoors(float speed)
     {
@@ -63,5 +73,13 @@ public class MainDoors : MonoBehaviour
     {
         door1.position = Vector3.Lerp(door1.position, destination3, speed);
         door2.position = Vector3.Lerp(door2.position, destination4, speed);
+    }
+    private void MakeEnabled()
+    {
+        enabled = true;
+    }
+    private void MakeDisabled()
+    {
+        enabled = false;
     }
 }

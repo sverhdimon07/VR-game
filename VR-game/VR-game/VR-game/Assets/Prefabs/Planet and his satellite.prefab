@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2404850420309560466}
   m_Layer: 0
-  m_Name: Planet and his satellite
+  m_Name: Planet And His Satellite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
