@@ -9,6 +9,7 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
     private const string SWORD_TAG = "PlayerSword";
 
     private float swordDamage = 10f;
+
     private float staggerExitTime = 5f;
 
     [SerializeField] private Transform bossTransform;
@@ -30,12 +31,14 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
     [SerializeField] private UnityEvent secondPhaseLifeDestroyed;
     [SerializeField] private UnityEvent regenerationEnded;
     [SerializeField] private UnityEvent bossDied;
-    private void AcceptSwordDamage()
+    private void AcceptSwordDamage2()
     {
         BossHealthSystem.secondHealth -= swordDamage;
         bossDamaged.Invoke();
         bossDamagedBySword.Invoke();
         Debug.Log(BossHealthSystem.secondHealth);
+
+        ChangeBodyColor(redMaterial);
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -54,7 +57,7 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
                     }
                     if (collider.CompareTag(SWORD_TAG))
                     {
-                        AcceptSwordDamage();
+                        AcceptSwordDamage2();
                         if ((BossHealthSystem.secondHealth <= 0) && (BossHealthSystem.counterBossLifeDestroyed == 1))
                         {
                             BossHealthSystem.counterBossLifeDestroyed += 1;
@@ -75,11 +78,9 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
                             BossHealthSystem.counterBossLifeDestroyed = 0;
 
                             ChangeBodyColor(greenMaterial);
-                            staggerState = true;
                             StaggerExit(staggerExitTime);
                             return;
                         }
-                        ChangeBodyColor(redMaterial);
                         Invoke(nameof(BodyTurnWhite), 0.25f);
                     }
                 }
@@ -101,6 +102,7 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
     }
     private void StaggerExit(float time)
     {
+        staggerState = true;
         Invoke(nameof(MakingStaggerFalse), time);
         Invoke(nameof(Regeneration), time);
         Invoke(nameof(BodyTurnWhite), time);

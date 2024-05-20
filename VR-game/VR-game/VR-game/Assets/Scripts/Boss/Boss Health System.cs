@@ -20,4 +20,13 @@ public class BossHealthSystem : MonoBehaviour
         secondHealth = 0;
         secondHealth += 100f;
     }
+
+    public void IncreaseBossLives()
+    {
+        if (currentLivesCount == 3f)
+        {
+            return;
+        }
+        currentLivesCount += 1;
+    }
 }

@@ -9,10 +9,6 @@ public class BossAI : MonoBehaviour
 {
     [SerializeField] private BossAnimator bossAnimator;
 
-    [SerializeField] private Transform bossTransform;
-    [SerializeField] private Transform playerTracker;
-    [SerializeField] private Transform centerPoint;
-
     [SerializeField] private AIDestinationSetter destinationSetter;
 
     [SerializeField] private Transform roamTarget;
@@ -22,27 +18,37 @@ public class BossAI : MonoBehaviour
 
     private Vector3 roamPosition;
 
-    //private Player player => FindObjectOfType<Player>();
-    private Player player;
+    [SerializeField] private Transform bossTransform;
+    [SerializeField] private Transform playerTransform;
+    //private Player playerEmptyComponent => FindObjectOfType<Player>();
+    private Player playerEmptyComponent;
+
+    [SerializeField] private BossInvincivility bossInvincivility;
 
     private bool cooldownActivated = false;
 
-    private float enemyAtackRange = 3f;
+    private float enemyAtackRange = 5f;
 
     private bool roamingState = false;
     private bool followingState = false;
     private bool notFollowingState = false;
+    private bool bullethellState = false;
+    private bool staggerState = false;
     private bool deathState = false;
 
     private bool protectionState = false;
-    private bool atackState = false;
     private bool openingState = false;
+
 
     [SerializeField] private UnityEvent protectionActivated;
     [SerializeField] private UnityEvent openingActivated;
+    [SerializeField] private UnityEvent staggerEnded;
+
+    private int protectionStateFirstEntryCheck = 0;
+    private int staggerStateEntryCounter = 0;
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        playerEmptyComponent = FindObjectOfType<Player>();
 
         roamingState = true;
         followingState = false;
@@ -56,37 +62,34 @@ public class BossAI : MonoBehaviour
         if (roamingState == true)
         {
             RoamingStateLogic();
-            return;
         }
         else if (followingState == true)
         {
-            bossTransform.LookAt(playerTracker);
             FollowingStateLogic();
-
-            return;
         }
         else if (notFollowingState == true)
         {
-            bossTransform.LookAt(playerTracker);
+            NotFollowingStateLogic();
+        }
+        else if (bullethellState == true)
+        {
 
-            if ((protectionState == true) && (openingState == false))
+        }
+        else if (staggerState == true)
+        {
+            if (staggerStateEntryCounter == 0)
             {
-                protectionActivated.Invoke();
+                staggerStateEntryCounter += 1;
+                StaggerState();
             }
-            else if ((protectionState == false) && (openingState == true))
-            {
-                openingActivated.Invoke();
-            }
-            return;
         }
         else if (deathState == true)
         {
             return;
         }
     }
-        //добавить состояния стаггера (мб связать с BossAID), смерти, кастинга спеллов в точке (подумать про место реализации состояния защиты босса и состояния локального стаггера)
-        //глобальный (потеря жизни) и локальный (потеря концентрации) стаггер
-        //скрипт попытки нанесения урона боссом, сцены
+        //доработать состояние смерти босса
+        //глобальный (потеря жизни) и локальный (потеря концентрации) стаггер - СДЕЛАТЬ КУЛДАУН АТАКИ ПОСЛЕ ЛОКАЛЬНОГО СТАГГЕРА
         //добавление состояние спелкастов босса
 
         //не забыть - запретить выпускать рейкаст из пушки во время 2х фаз
@@ -114,70 +117,118 @@ public class BossAI : MonoBehaviour
     }
     private void FollowingStateLogic()
     {
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= enemyAtackRange)
+        if (Vector3.Distance(gameObject.transform.position, playerTransform.position) <= enemyAtackRange)
         {
+            Vector3 playerTrackerPosition = new Vector3(playerTransform.position.x, bossTransform.position.y, playerTransform.position.z);
+            bossTransform.LookAt(playerTrackerPosition);
             destinationSetter.target = null;
 
-            ProtectionState();
-
-            if (cooldownActivated == false)
+            if (protectionStateFirstEntryCheck == 0)
             {
-                TryAttackPlayer();
-                //Cooldown(5f);
+                protectionStateFirstEntryCheck = 1;
+                ProtectionState();
             }
 
+            if ((protectionState == true) && (openingState == false))
+            {
+                ProtectionState();
+            }
+            TryAttackPlayer();
         }
         else
         {
-            OpeningState();
-
-            destinationSetter.target = player.transform;
+            protectionStateFirstEntryCheck = 0;
+            bossAnimator.ControlBlockAnimation(false);
+            bossAnimator.ControlWalkingAnimation(true);
+            destinationSetter.target = playerEmptyComponent.transform;
         }
     }
+    private void NotFollowingStateLogic()
+    {
+        Vector3 playerTrackerPosition = new Vector3(playerTransform.position.x, bossTransform.position.y, playerTransform.position.z);
+        bossTransform.LookAt(playerTrackerPosition);
 
+        ProtectionState();
+        TryAttackPlayer();
+    }
     private void Cooldown(float timeEnding)
     {
-        float timeCounter = 0;
-        timeCounter += Time.deltaTime;
         cooldownActivated = true;
-        if (timeCounter >= timeEnding)
-        {
-            cooldownActivated = false;
-        }    
+        Invoke(nameof(MakeСooldownActivatedFalse), timeEnding);
     }
+    private void MakeСooldownActivatedFalse()
+    {
+        cooldownActivated = false;
+    }    
     private void TryAttackPlayer()
     {
-        bossAnimator.ControlWalkingAnimation(false);
-
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= enemyAtackRange)
+        if (cooldownActivated == false)
         {
-            bossAnimator.PlayRightAttack();
+            bossAnimator.ControlWalkingAnimation(false);
+
+            if (Vector3.Distance(gameObject.transform.position, playerTransform.position) <= enemyAtackRange - 0.7f)
+            {
+                bossAnimator.PlayRandomAttack();
+                Cooldown(6f); //в итоговом - 3 или 4
+            }
         }
     }
-    private void ProtectionState()
+    public void ProtectionState()
     {
-        protectionState = true;
+        staggerState = false;
+
         openingState = false;
+        protectionState = true;
+
+        bossInvincivility.EnableInvincibility();
 
         bossAnimator.ControlWalkingAnimation(false);
         bossAnimator.ControlBlockAnimation(true);
 
         protectionActivated.Invoke();
     }
-    private void OpeningState()
+    public void OpeningState()
     {
         protectionState = false;
         openingState = true;
 
-        bossAnimator.ControlBlockAnimation(false);
-        bossAnimator.ControlWalkingAnimation(true);
+        bossInvincivility.DisableInvincibility();
 
         openingActivated.Invoke();
+    }
+    public void StaggerState()
+    {
+        OpeningState();
+        bossAnimator.PlayStagger();
+    }
+    public void EndStaggerActions()
+    {
+        followingState = true;
+
+        ProtectionState();
+
+        staggerStateEntryCounter = 0;
+        staggerEnded.Invoke();
+
+        Cooldown(4f);
+    }
+    public void MakeStaggerStateTrue()
+    {
+        roamingState = false;
+        followingState = false;
+        notFollowingState = false;
+        bullethellState = false;
+        deathState = false;
+
+        staggerState = true;
     }
     public void MakingNotFollowingStateTrue()
     {
         roamingState = false;
         followingState = false;
+        bullethellState = false;
+        deathState = false;
+
         notFollowingState = true;
     }
     public void MakingNotFollowingStateFalse()
@@ -189,6 +240,12 @@ public class BossAI : MonoBehaviour
     public void TryFindPlayer()
     {
         roamingState = false;
+        notFollowingState = false;
+        bullethellState = false;
+
+        protectionState = false;
+        openingState = false;
+
         followingState = true;
     }
     public void ActivateDeathState()
@@ -196,8 +253,10 @@ public class BossAI : MonoBehaviour
         roamingState = false;
         followingState = false;
         notFollowingState = false;
+        bullethellState = false;
+
         protectionState = false;
-        notFollowingState = false;
+        openingState = false;
 
         deathState = true;
     }

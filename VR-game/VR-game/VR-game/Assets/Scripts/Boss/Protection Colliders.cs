@@ -9,7 +9,10 @@ public class ProtectionColliders : MonoBehaviour
 
     [SerializeField] private Collider shieldCollider;
 
+    private int hitCounter = 0;
+
     [SerializeField] private UnityEvent shieldActivated;
+    [SerializeField] private UnityEvent staggerActvated;
     private void Start()
     {
         DisableCollider();
@@ -24,10 +27,23 @@ public class ProtectionColliders : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if (!collider.CompareTag(SWORD_TAG))
+        if (hitCounter < 15)
         {
-            return;
+            if (!collider.CompareTag(SWORD_TAG))
+            {
+                return;
+            }
+            shieldActivated.Invoke();
+
+            hitCounter += 1;
+            if (hitCounter == 15)
+            {
+                staggerActvated.Invoke();
+            }
         }
-        shieldActivated.Invoke();
+    }
+    public void RefreshHitCounter()
+    {
+        hitCounter = 0;
     }
 }

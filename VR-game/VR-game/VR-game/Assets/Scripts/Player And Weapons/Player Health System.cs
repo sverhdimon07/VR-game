@@ -12,4 +12,13 @@ public class PlayerHealthSystem : MonoBehaviour
         health = 0;
         health += 100f;
     }
+
+    public void IncreasePlayerLives()
+    {
+        if (currentLivesCount == 3f)
+        {
+            return;
+        }
+        currentLivesCount += 1;
+    }
 }

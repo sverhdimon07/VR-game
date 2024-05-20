@@ -8,7 +8,8 @@ public class PlayerAcceptIncomingDamage : MonoBehaviour
 {
     private const string SWORD_TAG = "BossSword";
 
-    private float swordDamage = 10f;
+    private float swordDamage = 20f;
+
     private float staggerExitTime = 7f;
 
     private bool staggerState = false;
@@ -22,6 +23,22 @@ public class PlayerAcceptIncomingDamage : MonoBehaviour
     {
         PlayerHealthSystem.health -= swordDamage;
         playerDamaged.Invoke();
+
+        if (PlayerHealthSystem.health <= 0)
+        {
+            PlayerHealthSystem.currentLivesCount -= 1;
+            LifeDestroyed.Invoke();
+
+            if (PlayerHealthSystem.currentLivesCount == 0f)
+            {
+                playerWasKilledState = true;
+                playerDied.Invoke();
+                return;
+            }
+            staggerState = true;
+            StaggerExit(staggerExitTime);
+            return;
+        }
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -34,21 +51,6 @@ public class PlayerAcceptIncomingDamage : MonoBehaviour
                     return;
                 }
                 AcceptSwordDamage();
-                if (PlayerHealthSystem.health <= 0)
-                {
-                    PlayerHealthSystem.currentLivesCount -= 1;
-                    LifeDestroyed.Invoke();
-
-                    if (PlayerHealthSystem.currentLivesCount == 0f)
-                    {
-                        playerWasKilledState = true;
-                        playerDied.Invoke();
-                        return;
-                    }
-                    staggerState = true;
-                    StaggerExit(staggerExitTime);
-                    return;
-                }
             }
         }
     }

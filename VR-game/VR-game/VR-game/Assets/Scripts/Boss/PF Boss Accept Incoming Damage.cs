@@ -23,18 +23,39 @@ public class PFBossAcceptIncomingDamage : MonoBehaviour
     [SerializeField] private UnityEvent bossDamaged;
     [SerializeField] private UnityEvent bossDamagedBySword;
     [SerializeField] private UnityEvent firstPhaseLifeDestroyed;
-    private void AcceptSwordDamage()
+    public void AcceptSwordDamage1() //вызываю эту функцию через событие анимации Stagger, поэтому добавил доп проверку
     {
         BossHealthSystem.health -= swordDamage;
         bossDamaged.Invoke();
         bossDamagedBySword.Invoke();
         Debug.Log(BossHealthSystem.health);
+
+        ChangeBodyColor(redMaterial);
+        Invoke(nameof(BodyTurnWhite), 0.25f);
+
+        if ((BossHealthSystem.health <= 0) && (BossHealthSystem.counterBossLifeDestroyed == 0))
+        {
+            BossHealthSystem.counterBossLifeDestroyed += 1;
+            firstPhaseLifeDestroyed.Invoke();
+            //AddStagger(); - мб сделать стаггер перед началом 2х фаз
+            return;
+        }
     }
     private void AcceptGunBulletDamage()
     {
         BossHealthSystem.health -= gunBulletDamage;
         bossDamaged.Invoke();
         Debug.Log(BossHealthSystem.health);
+
+        ChangeBodyColor(redMaterial);
+        Invoke(nameof(BodyTurnWhite), 0.25f);
+
+        if ((BossHealthSystem.health <= 0) && (BossHealthSystem.counterBossLifeDestroyed == 0))
+        {
+            BossHealthSystem.counterBossLifeDestroyed += 1;
+            firstPhaseLifeDestroyed.Invoke();
+            return;
+        }
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -51,28 +72,11 @@ public class PFBossAcceptIncomingDamage : MonoBehaviour
                 }
                 if (collider.CompareTag(SWORD_TAG))
                 {
-                    AcceptSwordDamage();
-                    if ((BossHealthSystem.health <= 0) && (BossHealthSystem.counterBossLifeDestroyed == 0))
-                    {
-                        BossHealthSystem.counterBossLifeDestroyed += 1;
-                        firstPhaseLifeDestroyed.Invoke();
-                        //AddStagger(); - мб сделать стаггер перед началом 2х фаз
-                        return;
-                    }
-                    ChangeBodyColor(redMaterial);
-                    Invoke(nameof(BodyTurnWhite), 0.25f);
+                    AcceptSwordDamage1();
                 }
                 if (collider.CompareTag(BULLET_TAG))
                 {
                     AcceptGunBulletDamage();
-                    if ((BossHealthSystem.health <= 0) && (BossHealthSystem.counterBossLifeDestroyed == 0))
-                    {
-                        BossHealthSystem.counterBossLifeDestroyed += 1;
-                        firstPhaseLifeDestroyed.Invoke();
-                        return;
-                    }
-                    ChangeBodyColor(redMaterial);
-                    Invoke(nameof(BodyTurnWhite), 0.25f);
                 }
             }
         }
