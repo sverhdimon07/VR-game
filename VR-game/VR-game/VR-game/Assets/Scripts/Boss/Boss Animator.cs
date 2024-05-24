@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossAnimator : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class BossAnimator : MonoBehaviour
     private const string WALKING = "Walking";
 
     [SerializeField] private Animator animator;
+
+    [SerializeField] private UnityEvent hitHandler1Activated;
+    [SerializeField] private UnityEvent hitHandler2Activated;
+    [SerializeField] private UnityEvent hitHandler3Activated;
+    [SerializeField] private UnityEvent hitHandler4Activated;
     public void PlayRandomAttack()
     {
         int number = Random.Range(1,4+1);
@@ -35,18 +41,22 @@ public class BossAnimator : MonoBehaviour
     public void PlayStraightAttack()
     {
         animator.SetTrigger(STRAIGHT_ATTACK);
+        hitHandler1Activated.Invoke();
     }
     public void PlayRightAttack()
     {
         animator.SetTrigger(RIGHT_ATTACK);
+        hitHandler4Activated.Invoke();
     }
     public void PlayLeftAttack()
     {
         animator.SetTrigger(LEFT_ATTACK);
+        hitHandler3Activated.Invoke();
     }
     public void PlayBottomAttack()
     {
         animator.SetTrigger(BOTTOM_ATTACK);
+        hitHandler2Activated.Invoke();
     }
     public void PlayStagger()
     {

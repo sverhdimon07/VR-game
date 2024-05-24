@@ -9,7 +9,14 @@ public class BossSounds : MonoBehaviour
     [SerializeField] private AudioSource audioSource1;
     public void PlaySound(int number)
     {
-        if (number == 7)
+        audioSource1.pitch = 1f;
+
+        if (number == 4)
+        {
+            audioSource1.pitch = Random.Range(0.9f, 1.15f);
+            audioSource1.PlayOneShot(sounds[number], 0.08f);
+        }
+        else if (number == 7)
         {
             audioSource1.PlayOneShot(sounds[number], 0.08f);
         }

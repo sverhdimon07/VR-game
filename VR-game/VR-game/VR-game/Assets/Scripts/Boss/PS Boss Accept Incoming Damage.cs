@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +5,7 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
 {
     private const string SWORD_TAG = "PlayerSword";
 
-    private float swordDamage = 10f;
+    private float swordDamage = 35f; //по стандарту 10
 
     private float staggerExitTime = 5f;
 
@@ -60,7 +57,7 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
                         AcceptSwordDamage2();
                         if ((BossHealthSystem.secondHealth <= 0) && (BossHealthSystem.counterBossLifeDestroyed == 1))
                         {
-                            BossHealthSystem.counterBossLifeDestroyed += 1;
+                            BossHealthSystem.counterBossLifeDestroyed = 0;
 
                             BossHealthSystem.currentLivesCount -= 1;
 
@@ -75,9 +72,8 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
 
                             secondPhaseLifeDestroyed.Invoke();
 
-                            BossHealthSystem.counterBossLifeDestroyed = 0;
-
                             ChangeBodyColor(greenMaterial);
+                            Invoke(nameof(BodyTurnGreen), 0.3f);
                             StaggerExit(staggerExitTime);
                             return;
                         }
@@ -86,6 +82,10 @@ public class PSBossAcceptIncomingDamage : MonoBehaviour
                 }
             }
         }
+    }
+    private void BodyTurnGreen()
+    {
+        ChangeBodyColor(greenMaterial);
     }
     private void BodyTurnWhite()
     {

@@ -5,8 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRGrabInteractableTwoAttach : XRGrabInteractable
 {
-    private const string LEFTHAND_TAG = "PlayerLeftHand";
-    private const string RIGHTHAND_TAG = "PlayerRightHand";
+    private const string LEFTHAND_TAG = "PlayerLeftHandForGrab";
+    private const string RIGHTHAND_TAG = "PlayerRightHandForGrab";
 
     [SerializeField] private Transform leftAttachTransform;
     [SerializeField] private Transform rightAttachTransform;

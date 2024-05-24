@@ -7,7 +7,7 @@ public class BossHoldingPointPosition : MonoBehaviour
     [SerializeField] Transform bossHoldingPoint;
     [SerializeField] Transform target;
 
-    private float value = 0.5f;
+    private float value = 0.63f;
     private void Start()
     {
         enabled = false;

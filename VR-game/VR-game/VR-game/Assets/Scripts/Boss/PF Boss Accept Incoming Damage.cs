@@ -9,7 +9,7 @@ public class PFBossAcceptIncomingDamage : MonoBehaviour
     private const string SWORD_TAG = "PlayerSword";
     private const string BULLET_TAG = "Bullet";
 
-    private float swordDamage = 10f;
+    private float swordDamage = 35f; //по стандарту 10
     private float gunBulletDamage = 0.5f;
 
     [SerializeField] private SkinnedMeshRenderer bossRender;

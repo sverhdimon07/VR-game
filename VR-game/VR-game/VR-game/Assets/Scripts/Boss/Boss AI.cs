@@ -27,7 +27,7 @@ public class BossAI : MonoBehaviour
 
     private bool cooldownActivated = false;
 
-    private float enemyAtackRange = 5f;
+    private float enemyAtackRange = 4.5f;
 
     private bool roamingState = false;
     private bool followingState = false;
@@ -43,6 +43,7 @@ public class BossAI : MonoBehaviour
     [SerializeField] private UnityEvent protectionActivated;
     [SerializeField] private UnityEvent openingActivated;
     [SerializeField] private UnityEvent staggerEnded;
+    [SerializeField] private UnityEvent attackActivated;
 
     private int protectionStateFirstEntryCheck = 0;
     private int staggerStateEntryCounter = 0;
@@ -96,9 +97,6 @@ public class BossAI : MonoBehaviour
         //сделать эффект того, что пистолет сломан во 2х фазах
 
         //продумать логику смерти игрока
-
-        //что то делать при ликвидации жизни игрока
-        //продумать систему, когда босс восстанавливает жизнь, когда игрок теряет жизнь
     private void RoamingStateLogic()
     {
         roamTarget.position = roamPosition;
@@ -164,13 +162,12 @@ public class BossAI : MonoBehaviour
     {
         if (cooldownActivated == false)
         {
+            attackActivated.Invoke();
+
             bossAnimator.ControlWalkingAnimation(false);
 
-            if (Vector3.Distance(gameObject.transform.position, playerTransform.position) <= enemyAtackRange - 0.7f)
-            {
-                bossAnimator.PlayRandomAttack();
-                Cooldown(6f); //в итоговом - 3 или 4
-            }
+            bossAnimator.PlayRandomAttack();
+            Cooldown(6f); //в итоговом - 3 или 4
         }
     }
     public void ProtectionState()
@@ -210,7 +207,7 @@ public class BossAI : MonoBehaviour
         staggerStateEntryCounter = 0;
         staggerEnded.Invoke();
 
-        Cooldown(4f);
+        Cooldown(4f); //из за этого бывают сбои в кулдауне
     }
     public void MakeStaggerStateTrue()
     {

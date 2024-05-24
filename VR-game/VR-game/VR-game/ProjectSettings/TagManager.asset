@@ -13,6 +13,9 @@ TagManager:
   - PlayerGun
   - PlayerLeftHand
   - PlayerRightHand
+  - PlayerLeftHandForGrab
+  - PlayerRightHandForGrab
+  - PlayerSwordTrigger
   layers:
   - Default
   - TransparentFX

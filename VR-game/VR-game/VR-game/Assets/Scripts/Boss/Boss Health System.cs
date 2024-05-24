@@ -14,6 +14,7 @@ public class BossHealthSystem : MonoBehaviour
     {
         health = 0;
         health += 100f;
+        counterBossLifeDestroyed = 0;
     }
     public static void SecondHealthRegeneration()
     {

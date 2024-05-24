@@ -62,7 +62,10 @@
     <Compile Include="Assets\Scripts\Sound System\Space Ships Sounds.cs" />
     <Compile Include="Assets\Imported Models\_Barking_Dog\Common Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Hand Color.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Incoming Hit Handler Position.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Incoming Hit Handler 4.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss Sword Handler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Environment\Object Spawner 1.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands 1.cs" />
+    <Compile Include="Assets\Scripts\Environment\Disable Object Rotation.cs" />
     <Compile Include="Assets\Scripts\Sound System\Table Sounds.cs" />
     <Compile Include="Assets\Scripts\Sound System\Camera Sounds.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
@@ -86,6 +90,7 @@
     <Compile Include="Assets\Scripts\Environment\Object Spawner 2.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Animate Hands 2.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Deflect Handler.cs" />
     <Compile Include="Assets\Scripts\Environment\Object Spawner 3.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Environment\Main Doors.cs" />
@@ -94,6 +99,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss Legs And Torso Action.cs" />
     <Compile Include="Assets\Scripts\Environment\Start Event Wall.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Spawn.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
@@ -105,13 +111,17 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Invincivility.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Bullet Behavior.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Incoming Hit Handler 1.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\Scripts\Boss\PS Boss Accept Incoming Damage.cs" />
     <Compile Include="Assets\Scripts\Environment\Arena Event Wall.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Incoming Hit Handler 3.cs" />
+    <Compile Include="Assets\Scripts\Environment\Particles Position Change.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Incoming Hit Handler 2.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\Player Health System.cs" />
     <Compile Include="Assets\Scripts\Boss\Protection Colliders.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
@@ -131,7 +141,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\Scripts\Environment\Object Set Parent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\Imported Models\_Barking_Dog\Common Scripts\Turn_Move.cs" />
@@ -140,12 +149,11 @@
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
     <Compile Include="Assets\Scripts\Player And Weapons\XR Grab Interactable Two Attach.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\Scripts\Player And Weapons\Player Accept Incoming Damage.cs" />
     <Compile Include="Assets\Scripts\Boss\Boss Animator.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
     <Compile Include="Assets\Scripts\MS Scripts\Menu Buttons Controller.cs" />
-    <Compile Include="Assets\Scripts\Player And Weapons\PlayerAcceptIncomingDamage.cs" />
     <Compile Include="Assets\Scripts\Common Systems\World Time Counter.cs" />
-    <Compile Include="Assets\Scripts\Boss\Boss Legs and Torso Action.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
     <Compile Include="Assets\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabApi.cs" />

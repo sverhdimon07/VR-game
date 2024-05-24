@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraSounds : MonoBehaviour
@@ -13,6 +14,8 @@ public class CameraSounds : MonoBehaviour
 
     public void PlaySound(int number)
     {
+        audioSource1.pitch = 1;
+
         if (number == 0)
         {
             audioSource2.loop = true;
@@ -27,18 +30,42 @@ public class CameraSounds : MonoBehaviour
             audioSource4.Play();
             Invoke(nameof(StopPlayFourthAudioSource), 7f);
         }
+        else if (number == 5)
+        {
+            audioSource1.pitch = Random.Range(0.9f, 1.15f);
+            audioSource1.PlayOneShot(sounds[number], 0.1f);
+        }
+        else if (number == 6)
+        {
+            audioSource1.PlayOneShot(sounds[number], 0.1f);
+        }
+        else if (number == 8)
+        {
+            Invoke(nameof(PlayEighthSound), 3f);
+        }
         else
         {
             audioSource1.PlayOneShot(sounds[number], 0.25f);
         }
     }
-    private void StopPlayFourthAudioSource()
+    private void PlayEighthSound()
     {
-        audioSource4.Stop();
+        audioSource1.PlayOneShot(sounds[8], 0.25f);
+    }
+    public void ChangeVolumeOfSecondAuidoSource()
+    {
+        audioSource2.volume = audioSource2.volume - 0.02f;
+    }
+    public void StopPlaySecondAuidoSource()
+    {
+        audioSource2.Stop();
     }
     public void StopPlayThirdAuidoSource()
     {
         audioSource3.Stop();
     }
-
+    public void StopPlayFourthAudioSource()
+    {
+        audioSource4.Stop();
+    }
 }
