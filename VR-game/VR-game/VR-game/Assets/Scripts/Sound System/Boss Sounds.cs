@@ -13,8 +13,8 @@ public class BossSounds : MonoBehaviour
 
         if (number == 4)
         {
-            audioSource1.pitch = Random.Range(0.9f, 1.15f);
-            audioSource1.PlayOneShot(sounds[number], 0.08f);
+            audioSource1.pitch = Random.Range(0.95f, 1.1f);
+            audioSource1.PlayOneShot(sounds[number], 0.25f);
         }
         else if (number == 7)
         {

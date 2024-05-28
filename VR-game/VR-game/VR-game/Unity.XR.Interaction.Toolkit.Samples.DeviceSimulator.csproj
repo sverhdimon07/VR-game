@@ -59,8 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\XR Tools\Samples2\XR Interaction Toolkit\2.5.3\XR Device Simulator\Scripts\XRDeviceSimulatorUI.cs" />
-    <Compile Include="Assets\XR Tools\Samples2\XR Interaction Toolkit\2.5.3\XR Device Simulator\Scripts\XRDeviceSimulatorHandsUI.cs" />
     <Compile Include="Assets\XR Tools\Samples2\XR Interaction Toolkit\2.5.3\XR Device Simulator\Scripts\XRDeviceSimulatorControllerUI.cs" />
+    <Compile Include="Assets\XR Tools\Samples2\XR Interaction Toolkit\2.5.3\XR Device Simulator\Scripts\XRDeviceSimulatorHandsUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\XR Tools\Samples2\XR Interaction Toolkit\2.5.3\XR Device Simulator\Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.asmdef" />
